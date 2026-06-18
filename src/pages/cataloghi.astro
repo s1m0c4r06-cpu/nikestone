@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/gallery/rivestimenti/rivestimenti-7.jpg';
+
+const cataloghi = [
+  {
+    tag: 'Brochure · IT/FR',
+    title: 'RIVESTIMENTI MURI E TETTI',
+    desc: 'Rivestimenti in Pietra di Luserna per ville di lusso. Muri interni ed esterni, camini, scale, bagni di pregio.',
+    cta: 'Richiedi PDF',
+    keys: { tag: 'cataloghi.card.1.tag', title: 'cataloghi.card.1.h', desc: 'cataloghi.card.1.desc', cta: 'cataloghi.card.1.cta' },
+  },
+  {
+    tag: 'Brochure · IT/FR',
+    title: 'PAVIMENTAZIONI E PEZZI SPECIALI',
+    desc: 'Una larga selezione di rivestimenti per pavimentazioni che soddisfano i gusti di ogni tipo di cliente.',
+    cta: 'Richiedi PDF',
+    keys: { tag: 'cataloghi.card.2.tag', title: 'cataloghi.card.2.h', desc: 'cataloghi.card.2.desc', cta: 'cataloghi.card.2.cta' },
+  },
+  {
+    tag: 'In sviluppo',
+    title: 'Visualizzazioni 3D',
+    desc: 'Rendering e modelli 3D dei progetti realizzati, per esplorare materiali e finiture prima della posa.',
+    cta: 'Scopri di più',
+    keys: { tag: 'cataloghi.card.3.tag', title: 'cataloghi.card.3.h', desc: 'cataloghi.card.3.desc', cta: 'cataloghi.card.3.cta' },
+  },
+];
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nikestone.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Cataloghi', item: 'https://www.nikestone.com/cataloghi' },
+  ],
+};
+---
+<Base
+  title="Cataloghi e brochure Pietra di Luserna · Nikestone"
+  description="Brochure e visualizzazioni Nikestone per architetti e committenti: rivestimenti muri e tetti, pavimentazioni e pezzi speciali, visualizzazioni 3D. Disponibili in italiano e francese su richiesta."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <Image src={heroImg} alt="Chalet con rivestimento in Pietra di Luserna, riferimento progettuale per le brochure Nikestone" class="page-hero-bg" widths={[768, 1280, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso">
+        <ol>
+          <li><a href="/" data-i="cataloghi.crumb.home">Home</a></li>
+          <li><span aria-current="page" data-i="cataloghi.crumb.current">Cataloghi</span></li>
+        </ol>
+      </nav>
+      <p class="eyebrow" data-i="cataloghi.hero.eyebrow">Cataloghi</p>
+      <h1 data-ihtml="cataloghi.hero.h1">Brochure e visualizzazioni<br /><em>per architetti e committenti.</em></h1>
+    </div>
+  </section>
+
+  <!-- CATALOGHI -->
+  <section class="cataloghi" aria-label="Cataloghi e brochure">
+    <div class="container">
+      <p class="lead rev" data-i="cataloghi.lead">Materiali di riferimento per progettisti, studi di architettura e clienti privati. Disponibili in italiano e francese, su richiesta tramite il form contatti.</p>
+      <div class="cat-grid">
+        {cataloghi.map((c) => (
+          <a class="cat-card rev" href="/contatti">
+            <span class="cat-tag" data-i={c.keys.tag}>{c.tag}</span>
+            <h3 data-i={c.keys.title}>{c.title}</h3>
+            <p data-i={c.keys.desc}>{c.desc}</p>
+            <span class="cat-cta" data-i={c.keys.cta}>{c.cta} →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" aria-label="Richiedi i cataloghi">
+    <div class="container">
+      <p class="eyebrow rev" style="color:var(--accent)" data-i="cataloghi.cta.eyebrow">Preventivo</p>
+      <h2 class="rev" data-ihtml="cataloghi.cta.h">Richiedi i cataloghi <em>in PDF.</em></h2>
+      <p class="rev" data-i="cataloghi.cta.sub">Indica nel modulo quali brochure ti interessano: te le inviamo via email.</p>
+      <div class="hero-actions rev"><a href="/contatti" class="btn btn-on-dark"><span data-i="cataloghi.cta.btn">Richiedi i cataloghi</span> <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+</Base>

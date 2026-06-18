@@ -1,0 +1,17 @@
+# build & deps
+node_modules/
+dist/
+.astro/
+.vercel/
+
+# interni (non pubblicare nel repo)
+HANDOFF.md
+_design/
+
+# asset sparsi alla root (non usati dal build Astro)
+/IMG_*.JPG
+/LOGO_*.jpg
+
+# os/editor
+.DS_Store
+*.log

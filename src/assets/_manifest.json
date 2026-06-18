@@ -1,0 +1,188 @@
+{
+  "piscine": [
+    {
+      "src": "WhatsApp Image 2026-06-16 at 09.27.53 (2).jpeg",
+      "out": "piscine-1.jpg"
+    },
+    {
+      "src": "WhatsApp Image 2026-06-16 at 09.27.53 (4).jpeg",
+      "out": "piscine-2.jpg"
+    },
+    {
+      "idx": 152,
+      "src": "WhatsApp Image 2026-06-16 at 09.27.53 (3).jpeg",
+      "out": "piscine-3.jpg"
+    },
+    {
+      "idx": 154,
+      "src": "WhatsApp Image 2026-06-16 at 09.27.53 (6).jpeg",
+      "out": "piscine-4.jpg"
+    }
+  ],
+  "rivestimenti": [
+    {
+      "idx": 117,
+      "src": "IMG_2834.JPG",
+      "out": "rivestimenti-1.jpg",
+      "bytes": 6558304
+    },
+    {
+      "idx": 118,
+      "src": "IMG_2835.JPG",
+      "out": "rivestimenti-2.jpg",
+      "bytes": 5938787
+    },
+    {
+      "idx": 123,
+      "src": "IMG_2840.JPG",
+      "out": "rivestimenti-3.jpg",
+      "bytes": 6637487
+    },
+    {
+      "idx": 31,
+      "src": "IMG_2748.JPG",
+      "out": "rivestimenti-4.jpg",
+      "bytes": 6220266
+    },
+    {
+      "idx": 128,
+      "src": "IMG_2845.JPG",
+      "out": "rivestimenti-5.jpg",
+      "bytes": 6062558
+    },
+    {
+      "idx": 127,
+      "src": "IMG_2844.JPG",
+      "out": "rivestimenti-6.jpg",
+      "bytes": 5537728
+    }
+  ],
+  "coperture": [
+    {
+      "idx": 65,
+      "src": "IMG_2782.JPG",
+      "out": "coperture-1.jpg",
+      "bytes": 5333327
+    },
+    {
+      "idx": 69,
+      "src": "IMG_2786.JPG",
+      "out": "coperture-2.jpg",
+      "bytes": 5979167
+    },
+    {
+      "idx": 91,
+      "src": "IMG_2808.JPG",
+      "out": "coperture-3.jpg",
+      "bytes": 5388835
+    },
+    {
+      "idx": 70,
+      "src": "IMG_2787.JPG",
+      "out": "coperture-4.jpg",
+      "bytes": 5713535
+    },
+    {
+      "idx": 93,
+      "src": "IMG_2810.JPG",
+      "out": "coperture-5.jpg",
+      "bytes": 4625023
+    },
+    {
+      "idx": 94,
+      "src": "IMG_2811.JPG",
+      "out": "coperture-6.jpg",
+      "bytes": 4886800
+    }
+  ],
+  "pavimentazioni": [
+    {
+      "idx": 21,
+      "src": "IMG_2738.JPG",
+      "out": "pavimentazioni-1.jpg",
+      "bytes": 4740289
+    },
+    {
+      "idx": 33,
+      "src": "IMG_2750.JPG",
+      "out": "pavimentazioni-2.jpg",
+      "bytes": 5324364
+    },
+    {
+      "idx": 55,
+      "src": "IMG_2772.JPG",
+      "out": "pavimentazioni-3.jpg",
+      "bytes": 6864015
+    },
+    {
+      "idx": 22,
+      "src": "IMG_2739.JPG",
+      "out": "pavimentazioni-4.jpg",
+      "bytes": 5816857
+    },
+    {
+      "idx": 35,
+      "src": "IMG_2752.JPG",
+      "out": "pavimentazioni-5.jpg",
+      "bytes": 5646159
+    },
+    {
+      "idx": 139,
+      "src": "WhatsApp Image 2026-06-16 at 09.27.52.jpeg",
+      "out": "pavimentazioni-6.jpg",
+      "bytes": 874023
+    },
+    {
+      "idx": 57,
+      "src": "IMG_2774.JPG",
+      "out": "pavimentazioni-7.jpg",
+      "bytes": 8357641
+    }
+  ],
+  "posa": [
+    {
+      "idx": 137,
+      "src": "WhatsApp Image 2026-06-16 at 09.27.51 (1).jpeg",
+      "out": "posa-1.jpg",
+      "bytes": 586330
+    },
+    {
+      "idx": 138,
+      "src": "WhatsApp Image 2026-06-16 at 09.27.51.jpeg",
+      "out": "posa-2.jpg",
+      "bytes": 526685
+    },
+    {
+      "idx": 150,
+      "src": "WhatsApp Image 2026-06-16 at 09.27.53 (19).jpeg",
+      "out": "posa-3.jpg",
+      "bytes": 726535
+    }
+  ],
+  "feature": [
+    {
+      "idx": 24,
+      "src": "IMG_2741.JPG",
+      "out": "feature-1.jpg",
+      "bytes": 3425138
+    },
+    {
+      "idx": 105,
+      "src": "IMG_2822.JPG",
+      "out": "feature-2.jpg",
+      "bytes": 5054053
+    },
+    {
+      "idx": 152,
+      "src": "WhatsApp Image 2026-06-16 at 09.27.53 (20).jpeg",
+      "out": "feature-3.jpg",
+      "bytes": 676033
+    },
+    {
+      "idx": 85,
+      "src": "IMG_2802.JPG",
+      "out": "feature-4.jpg",
+      "bytes": 6100225
+    }
+  ]
+}

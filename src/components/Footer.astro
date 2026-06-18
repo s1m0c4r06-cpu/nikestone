@@ -1,0 +1,45 @@
+---
+const links = [
+  { href: '/chi-siamo', key: 'nav.about', label: 'Chi siamo' },
+  { href: '/pietra-di-luserna', key: 'nav.stone', label: 'La Pietra' },
+  { href: '/lavori', key: 'nav.work', label: 'Lavori' },
+  { href: '/metodo', key: 'nav.process', label: 'Metodo' },
+  { href: '/servizi', key: 'nav.svc', label: 'Servizi' },
+  { href: '/cataloghi', key: 'nav.catalog', label: 'Cataloghi' },
+  { href: '/contatti', key: 'nav.contact', label: 'Contatti' },
+];
+---
+<footer class="footer">
+  <div class="container foot-grid">
+    <div class="foot-brand">
+      <img class="fb-logo-img" src="/logo.png" alt="Nikestone" width="712" height="320" />
+      <p class="foot-tag" data-i="foot.tag">POSA DI PIETRA NATURALE</p>
+      <p class="foot-addr">Via Bagnolo 23 · 10060 Bibiana (TO) · Italia<br>P.IVA 13348430011</p>
+    </div>
+    <div class="foot-col">
+      <h4 data-i="foot.nav">Navigazione</h4>
+      <ul>{links.map((l) => <li><a href={l.href} data-i={l.key}>{l.label}</a></li>)}</ul>
+    </div>
+    <div class="foot-col">
+      <h4 data-i="foot.contacts">Contatti</h4>
+      <ul>
+        <li><a href="tel:+393316381673">+39 331 638 1673</a> · IT</li>
+        <li><a href="tel:+33623751953">+33 6 23 75 19 53</a> · FR</li>
+        <li><a href="mailto:massimoangelino23@gmail.com">massimoangelino23@gmail.com</a></li>
+        <li><a href="https://instagram.com/nikestone.it" target="_blank" rel="noopener">@nikestone.it</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4 data-i="foot.markets">Mercati</h4>
+      <ul>
+        <li data-i="market.it">Italia</li>
+        <li data-i="market.fr">Francia</li>
+        <li data-i="market.ch">Svizzera</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Nikestone di Angelino Massimo · <span data-i="foot.rights">Tutti i diritti riservati</span></span>
+    <span><a href="/privacy" data-i="foot.privacy">Privacy</a> · <a href="/cookie" data-i="foot.cookie">Cookie</a></span>
+  </div>
+</footer>

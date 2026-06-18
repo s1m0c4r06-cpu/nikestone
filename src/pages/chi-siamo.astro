@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/about-chateau.webp';
+import storiaImg from '../assets/founders.jpg';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nikestone.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Chi siamo', item: 'https://www.nikestone.com/chi-siamo' },
+  ],
+};
+---
+<Base
+  title="Chi siamo · Nikestone · 40 anni di posa di Pietra di Luserna"
+  description="Nikestone di Angelino Massimo: una tradizione di famiglia nata da Mauro Angelino, oggi guidata dal figlio Massimo. Quarant'anni di Pietra di Luserna lavorata e posata tra Italia, Francia e Svizzera."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <Image src={heroImg} alt="Château de Cachard, Francia: pavimentazione e bordo piscina in Pietra di Luserna, realizzazione Nikestone" class="page-hero-bg" widths={[768, 1280]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso">
+        <ol>
+          <li><a href="/" data-i="chisiamo.crumb.home">Home</a></li>
+          <li><span aria-current="page" data-i="nav.about">Chi siamo</span></li>
+        </ol>
+      </nav>
+      <p class="eyebrow" data-i="chisiamo.hero.eyebrow">Chi siamo</p>
+      <h1 data-ihtml="chisiamo.hero.h1">Una tradizione di famiglia,<br /><em>una nuova generazione.</em></h1>
+      <p class="page-lead" data-i="chisiamo.hero.lead">Quarant'anni di Pietra di Luserna lavorata e posata a mano, tra Italia, Francia e Svizzera.</p>
+    </div>
+  </section>
+
+  <!-- STORIA -->
+  <section class="about" aria-label="La nostra storia">
+    <div class="container two-col">
+      <div class="col-txt rev">
+        <p class="eyebrow" data-i="chisiamo.storia.eyebrow">La nostra storia</p>
+        <h2 data-ihtml="chisiamo.storia.h2">Dalle mani di Mauro,<br />alla guida di Massimo.</h2>
+        <p data-ihtml="chisiamo.storia.p1">Nikestone nasce dalle mani di <strong>Mauro Angelino</strong>, che a fine carriera ha lasciato il compito di guidare l'attività al figlio <strong>Massimo Angelino</strong>: quattro decenni di pietra lavorata e posata in cantieri tra Francia, Germania, Svizzera e Italia.</p>
+        <p data-i="chisiamo.storia.p2">Lavoriamo per architetti, interior designer, general contractor e committenti privati che vogliono superfici autentiche e risultati garantiti. Ogni progetto è unico, un dialogo costante tra committente e azienda.</p>
+        <p class="about-sign" data-i="chisiamo.storia.sign">Massimo &amp; Mauro Angelino</p>
+        <p style="margin-top:1.5rem"><a href="/lavori" class="btn btn-ghost"><span data-i="chisiamo.storia.cta">Vedi i nostri lavori</span> <span class="arrow">→</span></a></p>
+      </div>
+      <div class="col-img rev">
+        <figure><Image src={storiaImg} alt="Massimo e Mauro Angelino allo stand Nikestone, davanti all'insegna e a campioni di Pietra di Luserna" widths={[480, 800, 1200]} sizes="(max-width:1024px) 100vw, 42vw" style="aspect-ratio:1840/1340" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="I nostri numeri">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat rev"><strong>40+</strong><span data-i="chisiamo.stat.1">Anni di mestiere</span></div>
+        <div class="stat rev"><strong>2</strong><span data-i="chisiamo.stat.2">Paesi attivi · FR · CH</span></div>
+        <div class="stat rev"><strong>100%</strong><span data-i="chisiamo.stat.3">Pietra naturale</span></div>
+        <div class="stat rev"><strong>0</strong><span data-i="chisiamo.stat.4">Compromessi sui dettagli</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" aria-label="Inizia il progetto">
+    <div class="container">
+      <p class="eyebrow rev" style="color:var(--accent)" data-i="cta.kicker">Preventivo</p>
+      <h2 class="rev" data-ihtml="chisiamo.cta.h">Costruiamo qualcosa <em>che resta.</em></h2>
+      <p class="rev" data-i="cta.sub">Raccontaci il tuo progetto: ti ricontattiamo entro 48 ore lavorative.</p>
+      <div class="hero-actions rev"><a href="/contatti" class="btn btn-on-dark"><span data-i="cta.btn">Richiedi un preventivo</span> <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,142 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image, getImage } from 'astro:assets';
+import heroImg from '../assets/feature/chalet-hero.jpg';
+
+// carica tutte le immagini di una cartella, ordinate per nome file
+const load = (mods: Record<string, any>) =>
+  Object.entries(mods)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([, m]) => m.default as ImageMetadata);
+
+const piscine = load(import.meta.glob('../assets/gallery/piscine/*.{jpg,jpeg,JPG}', { eager: true }));
+const rivestimenti = load(import.meta.glob('../assets/gallery/rivestimenti/*.{jpg,jpeg,JPG}', { eager: true }));
+const coperture = load(import.meta.glob('../assets/gallery/coperture/*.{jpg,jpeg,JPG}', { eager: true }));
+const pavimentazioni = load(import.meta.glob('../assets/gallery/pavimentazioni/*.{jpg,jpeg,JPG}', { eager: true }));
+
+// alt descrittivi (bozza, rifinitura finale in step 9 SEO)
+const alts: Record<string, string[]> = {
+  piscine: [
+    'Bordo piscina in lastre di Pietra di Luserna',
+    'Piscina con bordo e pavimentazione in Pietra di Luserna',
+    'Bordo piscina fiammato antiscivolo in Pietra di Luserna',
+    'Area piscina e wellness in Pietra di Luserna',
+  ],
+  rivestimenti: [
+    'Muratura a secco in Pietra di Luserna a spacco naturale',
+    'Rivestimento murale esterno in Pietra di Luserna',
+    'Parete rivestita in Pietra di Luserna a spacco',
+    'Rivestimento in liste di Pietra di Luserna',
+    'Muro a giunti aperti in Pietra di Luserna',
+    'Rivestimento in Pietra di Luserna su facciata',
+    'Chalet alpino con base e rivestimento in Pietra di Luserna',
+    'Facciata di chalet con basamento in Pietra di Luserna',
+  ],
+  coperture: [
+    'Copertura in lose di Pietra di Luserna su chalet',
+    'Tetto in lose di Pietra di Luserna',
+    'Copertura in lose su chalet di montagna',
+    'Falda di tetto in lose di Luserna',
+    'Chalet con copertura in lose di Pietra di Luserna',
+    'Dettaglio di copertura in lose di Luserna',
+    'Tetto in lose di Pietra di Luserna con abbaino',
+  ],
+  pavimentazioni: [
+    'Scala interna in Pietra di Luserna con illuminazione LED',
+    'Pavimentazione esterna in lastre di Pietra di Luserna',
+    'Pavimentazione in Pietra di Luserna con struttura in legno',
+    'Pavimentazione in lastre di Pietra di Luserna',
+    'Terrazza in Pietra di Luserna',
+    'Camminamento in Pietra di Luserna',
+    'Pavimentazione in cubetti di Pietra di Luserna',
+  ],
+};
+const altBase: Record<string, string> = {
+  piscine: 'Bordo piscina in Pietra di Luserna',
+  rivestimenti: 'Rivestimento in Pietra di Luserna',
+  coperture: 'Copertura in lose di Pietra di Luserna',
+  pavimentazioni: 'Pavimentazione in Pietra di Luserna',
+};
+
+const cats = [
+  { key: 'piscine', n: '01', title: 'Piscine & Wellness', imgs: piscine },
+  { key: 'rivestimenti', n: '02', title: 'Rivestimenti interni ed esterni', imgs: rivestimenti },
+  { key: 'coperture', n: '03', title: 'Coperture per chalet', imgs: coperture },
+  { key: 'pavimentazioni', n: '04', title: 'Pavimentazioni & Scale', imgs: pavimentazioni },
+];
+
+// item finali: src thumb + alt + url full (1600px, senza upscaling) per lightbox
+const groups = await Promise.all(
+  cats.map(async (c) => ({
+    ...c,
+    items: await Promise.all(
+      c.imgs.map(async (src, i) => ({
+        src,
+        alt: alts[c.key]?.[i] ?? altBase[c.key],
+        full: (await getImage({ src, width: Math.min(1600, src.width), format: 'webp' })).src,
+      }))
+    ),
+  }))
+);
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nikestone.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Lavori', item: 'https://www.nikestone.com/lavori' },
+  ],
+};
+---
+<Base
+  title="Lavori realizzati in Pietra di Luserna · Portfolio · Nikestone"
+  description="Portfolio Nikestone: piscine e wellness, rivestimenti interni ed esterni, coperture in lose per chalet, pavimentazioni e scale in Pietra di Luserna. Progetti tra Italia, Francia e Svizzera."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <Image src={heroImg} alt="Chalet alpino con basamento in Pietra di Luserna e vetta innevata sullo sfondo, realizzazione Nikestone" class="page-hero-bg" widths={[768, 1280, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso">
+        <ol>
+          <li><a href="/" data-i="lavori.crumb.home">Home</a></li>
+          <li><span aria-current="page" data-i="nav.work">Lavori</span></li>
+        </ol>
+      </nav>
+      <p class="eyebrow" data-i="lavori.hero.eyebrow">Lavori realizzati</p>
+      <h1 data-ihtml="lavori.hero.h1">Selezione di progetti<br /><em>tra Italia, Francia e Svizzera.</em></h1>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" aria-label="Lavori realizzati">
+    <div class="container">
+      {groups.map((g, i) => (
+        <div class="cat">
+          <h2 class="cat-title rev"><span class="cat-n">{g.n}</span> <span data-i={`lavori.cat.${i + 1}.title`}>{g.title}</span></h2>
+          <div class="gallery" data-gallery data-limit="3">
+            {g.items.map((it) => (
+              <figure class="gitem rev">
+                <Image src={it.src} alt={it.alt} data-full={it.full} widths={[400, 800]} sizes="(max-width:640px) 92vw, (max-width:1024px) 45vw, 30vw" loading="lazy" />
+              </figure>
+            ))}
+          </div>
+          <div class="gallery-more">
+            <button class="btn btn-ghost" data-more hidden><span data-i="lavori.gallery.more">Vedi altre</span></button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" aria-label="Inizia il progetto">
+    <div class="container">
+      <p class="eyebrow rev" style="color:var(--accent)" data-i="cta.kicker">Preventivo</p>
+      <h2 class="rev" data-ihtml="lavori.cta.h">Un progetto simile <em>in mente?</em></h2>
+      <p class="rev" data-i="lavori.cta.sub">Raccontaci cosa hai in mente: ti ricontattiamo entro 48 ore lavorative.</p>
+      <div class="hero-actions rev"><a href="/contatti" class="btn btn-on-dark"><span data-i="cta.btn">Richiedi un preventivo</span> <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+</Base>

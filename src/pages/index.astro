@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/about-chateau.webp';
+import aboutImg from '../assets/founders.jpg';
+---
+<Base
+  title="Nikestone · Pietra di Luserna per Chalet di Lusso, Ville e Hotel"
+  description="Posa artigianale di Pietra di Luserna per pavimentazioni, rivestimenti, terrazze, coperture in lose e wellness. Chalet di lusso e ville tra Italia, Francia e Svizzera. 40 anni di mestiere."
+>
+  <!-- HERO (mix B+C: split asimmetrico chiaro, foto Château cornice oro) -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-col">
+        <p class="hero-eyebrow rev" data-i="hero.kicker">Pietra di Luserna · Val Pellice, Piemonte</p>
+        <h1 class="rev"><span data-i="hero.h1a">La pietra</span><em data-i="hero.h1b">che resta.</em></h1>
+        <p class="hero-sub rev" data-i="hero.sub">Lavoriamo e posiamo Pietra di Luserna per chalet di lusso, ville private e progetti d'autore. Quarant'anni di mestiere tra la Francia e la Svizzera.</p>
+        <div class="hero-actions rev">
+          <a href="/lavori" class="btn btn-solid"><span data-i="hero.cta1">Vedi i lavori</span> <span class="arrow">→</span></a>
+          <a href="/contatti" class="btn btn-ghost"><span data-i="hero.cta2">Inizia il tuo progetto</span></a>
+        </div>
+      </div>
+      <figure class="hero-fig rev">
+        <div class="hero-fig-img"><Image src={heroImg} alt="Château de Cachard, Francia — bordo piscina e pavimentazione in Pietra di Luserna posati da Nikestone" widths={[480, 720, 960]} sizes="(max-width:1024px) 92vw, 460px" loading="eager" fetchpriority="high" /></div>
+        <figcaption class="hero-figcap" data-i="hero.figcap">Château de Cachard · bordo piscina e pavimentazione in Pietra di Luserna</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="I nostri numeri">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat rev"><strong>40+</strong><span data-i="stat.1">Anni di mestiere</span></div>
+        <div class="stat rev"><strong>2</strong><span data-i="stat.2">Paesi attivi · FR · CH</span></div>
+        <div class="stat rev"><strong>100%</strong><span data-i="stat.3">Pietra naturale</span></div>
+        <div class="stat rev"><strong>0</strong><span data-i="stat.4">Compromessi sui dettagli</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT teaser -->
+  <section class="about" aria-label="Chi siamo">
+    <div class="container two-col">
+      <div class="col-txt rev">
+        <p class="eyebrow" data-i="about.kicker">Chi siamo</p>
+        <h2 data-i="about.h">Una tradizione di famiglia, una nuova generazione.</h2>
+        <p data-i="about.p1">Nikestone nasce dalle mani di Mauro Angelino, che a fine carriera ha lasciato il compito di guidare l'attività al figlio Massimo Angelino: quattro decenni di pietra lavorata e posata in cantieri tra Francia, Germania, Svizzera e Italia.</p>
+        <p data-i="about.p2">Lavoriamo per architetti, interior designer, general contractor e committenti privati che vogliono superfici autentiche e risultati garantiti.</p>
+        <p class="about-sign" data-i="about.sign">Massimo & Mauro Angelino</p>
+        <p style="margin-top:1.5rem"><a href="/chi-siamo" class="btn btn-ghost"><span data-i="about.cta">La nostra storia</span> <span class="arrow">→</span></a></p>
+      </div>
+      <div class="col-img rev">
+        <figure><Image src={aboutImg} alt="Mauro e Massimo Angelino, fondatori di Nikestone" widths={[560, 900]} sizes="(max-width:1024px) 100vw, 44vw" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA (arioso chiaro) -->
+  <section class="cta-band" aria-label="Preventivo">
+    <div class="container">
+      <p class="eyebrow rev" data-i="cta.kicker">Preventivo</p>
+      <h2 class="rev" data-i="cta.h">Iniziamo il tuo progetto.</h2>
+      <p class="rev" data-i="cta.sub">Raccontaci l'intervento: ti ricontattiamo entro 48 ore lavorative.</p>
+      <div class="hero-actions rev">
+        <a href="/contatti" class="btn btn-solid"><span data-i="cta.btn">Richiedi un preventivo</span> <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+</Base>

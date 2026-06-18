@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/feature/feature-3.jpg';
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nikestone.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Contatti', item: 'https://www.nikestone.com/contatti' },
+  ],
+};
+const mapsEmbed = 'https://www.google.com/maps?q=Via%20Bagnolo%2023,%2010060%20Bibiana%20TO,%20Italia&z=14&output=embed';
+const mapsLink = 'https://www.google.com/maps/search/?api=1&query=Via%20Bagnolo%2023%2C%2010060%20Bibiana%20TO%2C%20Italia';
+---
+<Base
+  title="Contatti e preventivo · Nikestone · Pietra di Luserna"
+  description="Richiedi un preventivo per la tua Pietra di Luserna: compila il modulo. Sede a Bibiana (TO), attivi in Italia, Francia e Svizzera. Risposta entro 48 ore lavorative."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <Image src={heroImg} alt="Terrazza giardino in lastre di Pietra di Luserna, realizzazione Nikestone" class="page-hero-bg" widths={[768, 1280, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso">
+        <ol>
+          <li><a href="/" data-i="contatti.crumb.home">Home</a></li>
+          <li><span aria-current="page" data-i="nav.contact">Contatti</span></li>
+        </ol>
+      </nav>
+      <p class="eyebrow" data-i="contatti.hero.eyebrow">Contatti</p>
+      <h1 data-ihtml="contatti.hero.h1">Inizia il tuo<br /><em>progetto su misura.</em></h1>
+    </div>
+  </section>
+
+  <section class="contact" aria-label="Contatti">
+    <div class="container contact-grid">
+
+      <aside class="contact-info rev">
+        <p class="contact-lead" data-i="contatti.info.lead">Compila il modulo: un nostro responsabile vi contatterà il prima possibile per ascoltare le vostre esigenze.</p>
+
+        <ul class="ci-list">
+          <li><span class="ci-l" data-i="contatti.info.sede.l">Sede</span><span class="ci-v" data-ihtml="contatti.info.sede.v">Via Bagnolo 23<br />10060 Bibiana (TO) · Italia</span></li>
+          <li><span class="ci-l" data-i="contatti.info.tel.l">Telefono</span><span class="ci-v"><a href="tel:+393316381673">+39 331 638 1673</a><span class="ci-flag">IT</span><br /><a href="tel:+33623751953">+33 6 23 75 19 53</a><span class="ci-flag">FR</span></span></li>
+          <li><span class="ci-l" data-i="contatti.info.email.l">Email</span><span class="ci-v"><a href="mailto:massimoangelino23@gmail.com">massimoangelino23@gmail.com</a></span></li>
+          <li><span class="ci-l" data-i="contatti.info.instagram.l">Instagram</span><span class="ci-v"><a href="https://instagram.com/nikestone.it" target="_blank" rel="noopener">@nikestone.it</a></span></li>
+          <li><span class="ci-l" data-i="contatti.info.piva.l">P.IVA</span><span class="ci-v">13348430011</span></li>
+        </ul>
+
+        <div class="contact-map" aria-label="Mappa sede Nikestone">
+          <iframe title="Mappa sede Nikestone — Via Bagnolo 23, Bibiana (TO)" src={mapsEmbed} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <a class="map-app-btn" href={mapsLink} target="_blank" rel="noopener"><span class="map-pin" aria-hidden="true">📍</span> <span data-i="contatti.info.maps.btn">Apri in Google Maps</span></a>
+      </aside>
+
+      <form id="contactForm" class="contact-form rev" novalidate action="https://formsubmit.co/massimoangelino23@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="Nuova richiesta preventivo · Nikestone" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" />
+        <input type="hidden" name="_replyto" id="hReply" />
+
+        <div class="form-progress" aria-hidden="true">
+          <div class="fp-step active" data-step="1"><span>1</span><em data-i="contatti.form.step.1">Anagrafica</em></div>
+          <div class="fp-bar"><div class="fp-fill" style="width:50%"></div></div>
+          <div class="fp-step" data-step="2"><span>2</span><em data-i="contatti.form.step.2">Progetto</em></div>
+          <div class="fp-bar"><div class="fp-fill" style="width:0"></div></div>
+          <div class="fp-step" data-step="3"><span>3</span><em data-ihtml="contatti.form.step.3">Dati &amp; invio</em></div>
+        </div>
+
+        <fieldset class="fstep is-active" data-step="1">
+          <legend class="visually-hidden">Anagrafica</legend>
+          <h2 class="fstep-h" data-i="contatti.form.s1.h">Parlaci di te</h2>
+          <p class="fstep-p" data-i="contatti.form.s1.p">Iniziamo dalle informazioni base per richiamarti.</p>
+          <div class="row">
+            <label class="field"><span data-i="contatti.form.field.nome">Nome</span><input type="text" name="nome" autocomplete="given-name" required /></label>
+            <label class="field"><span data-i="contatti.form.field.cognome">Cognome</span><input type="text" name="cognome" autocomplete="family-name" required /></label>
+          </div>
+          <label class="field"><span data-ihtml="contatti.form.field.ragione_sociale">Ragione sociale <em>(facoltativo)</em></span><input type="text" name="ragione_sociale" autocomplete="organization" /></label>
+          <div class="row">
+            <label class="field"><span data-i="contatti.form.field.email">Email</span><input type="email" name="email" autocomplete="email" required /></label>
+            <label class="field"><span data-ihtml="contatti.form.field.telefono">Telefono <em>per fissare la consulenza</em></span><input type="tel" name="telefono" autocomplete="tel" required /></label>
+          </div>
+          <fieldset class="choice">
+            <legend data-i="contatti.form.profilo.legend">Profilo</legend>
+            <label class="opt"><input type="radio" name="profilo" value="Privato — proprietario immobile" required /><span data-i="contatti.form.profilo.privato">Privato · proprietario immobile</span></label>
+            <label class="opt"><input type="radio" name="profilo" value="Architetto / Interior Designer / Progettista" /><span data-i="contatti.form.profilo.architetto">Architetto · Interior Designer · Progettista</span></label>
+            <label class="opt"><input type="radio" name="profilo" value="Impresa edile / General Contractor" /><span data-i="contatti.form.profilo.impresa">Impresa edile · General Contractor</span></label>
+            <label class="opt"><input type="radio" name="profilo" value="Sviluppatore / Hotelier" /><span data-i="contatti.form.profilo.sviluppatore">Sviluppatore · Hotelier</span></label>
+          </fieldset>
+          <div class="fstep-nav"><span></span><button type="button" class="btn btn-solid" data-next="2" data-i="contatti.form.nav.continua">Continua →</button></div>
+        </fieldset>
+
+        <fieldset class="fstep" data-step="2">
+          <legend class="visually-hidden">Progetto</legend>
+          <h2 class="fstep-h" data-i="contatti.form.s2.h">Il tuo progetto</h2>
+          <p class="fstep-p" data-i="contatti.form.s2.p">Aiutaci a capire l'intervento.</p>
+          <fieldset class="choice">
+            <legend data-i="contatti.form.immobile.legend">Tipo di immobile</legend>
+            <label class="vopt"><input type="radio" name="immobile" value="Residenza / Villa / Attico" required /><span class="vi" aria-hidden="true">⌂</span><strong data-i="contatti.form.immobile.residenza">Residenza · Villa · Attico</strong></label>
+            <label class="vopt"><input type="radio" name="immobile" value="Chalet montagna / Rustico" /><span class="vi" aria-hidden="true">⛰</span><strong data-i="contatti.form.immobile.chalet">Chalet montagna · Rustico</strong></label>
+            <label class="vopt"><input type="radio" name="immobile" value="Spazio commerciale / Hotel / Showroom" /><span class="vi" aria-hidden="true">▤</span><strong data-i="contatti.form.immobile.commerciale">Spazio commerciale · Hotel · Showroom</strong></label>
+            <label class="vopt"><input type="radio" name="immobile" value="Altro" /><span class="vi" aria-hidden="true">◇</span><strong data-i="contatti.form.immobile.altro">Altro</strong></label>
+          </fieldset>
+          <fieldset class="choice">
+            <legend data-ihtml="contatti.form.ambito.legend">Ambito <em>(selezione multipla)</em></legend>
+            <label class="mopt"><input type="checkbox" name="ambito" value="Pavimentazioni esterne / Terrazze" /><span data-i="contatti.form.ambito.pavimentazioni">Pavimentazioni esterne · Terrazze</span></label>
+            <label class="mopt"><input type="checkbox" name="ambito" value="Rivestimenti interni / Camini" /><span data-i="contatti.form.ambito.rivestimenti">Rivestimenti interni · Camini</span></label>
+            <label class="mopt"><input type="checkbox" name="ambito" value="Wellness / Piscine / SPA" /><span data-i="contatti.form.ambito.wellness">Wellness · Piscine · SPA</span></label>
+            <label class="mopt"><input type="checkbox" name="ambito" value="Arredo su misura (scale / cucine / bagni)" /><span data-i="contatti.form.ambito.arredo">Arredo su misura · Scale · Cucine · Bagni</span></label>
+          </fieldset>
+          <label class="field"><span data-ihtml="contatti.form.field.note">Note di progetto <em>(facoltativo)</em></span><textarea name="note" rows="4" data-iph="contatti.form.field.note.ph" placeholder="Descrivi brevemente l'intervento, le superfici approssimative, le tue priorità…"></textarea></label>
+          <div class="fstep-nav"><button type="button" class="btn btn-ghost" data-prev="1" data-i="contatti.form.nav.indietro">← Indietro</button><button type="button" class="btn btn-solid" data-next="3" data-i="contatti.form.nav.continua">Continua →</button></div>
+        </fieldset>
+
+        <fieldset class="fstep" data-step="3">
+          <legend class="visually-hidden">Dati e invio</legend>
+          <h2 class="fstep-h" data-i="contatti.form.s3.h">Tempistiche e materiale</h2>
+          <p class="fstep-p" data-i="contatti.form.s3.p">Ultimi dettagli e poi siamo pronti.</p>
+          <fieldset class="choice">
+            <legend data-i="contatti.form.fase.legend">Fase del progetto</legend>
+            <label class="opt"><input type="radio" name="fase" value="Ideazione / Preliminare" required /><span data-i="contatti.form.fase.ideazione">Ideazione · Preliminare</span></label>
+            <label class="opt"><input type="radio" name="fase" value="Inizio previsto (3-6 mesi)" /><span data-i="contatti.form.fase.inizio">Inizio previsto 3–6 mesi</span></label>
+            <label class="opt"><input type="radio" name="fase" value="Cantiere avviato / Urgente" /><span data-i="contatti.form.fase.cantiere">Cantiere avviato · Urgente</span></label>
+          </fieldset>
+          <div class="field file">
+            <span data-ihtml="contatti.form.file.l">Allega materiale <em>(PDF · DWG · ZIP · JPG · max 20MB)</em></span>
+            <input type="file" name="allegato" accept=".pdf,.dwg,.zip,.jpg,.jpeg,.png" id="fileInput" hidden />
+            <button type="button" class="file-display" id="fileDisplay" data-i="contatti.form.file.btn">📎 Scegli file…</button>
+          </div>
+          <label class="check"><input type="checkbox" name="privacy" required /><span data-ihtml="contatti.form.privacy">Ho letto e accetto l'<a href="/privacy" target="_blank">informativa privacy</a>.</span></label>
+          <div id="formMsg" class="form-msg" role="status" aria-live="polite"></div>
+          <div class="fstep-nav"><button type="button" class="btn btn-ghost" data-prev="2" data-i="contatti.form.nav.indietro">← Indietro</button><button type="submit" class="btn btn-solid" data-i="contatti.form.submit">Invia richiesta</button></div>
+        </fieldset>
+      </form>
+
+    </div>
+  </section>
+</Base>

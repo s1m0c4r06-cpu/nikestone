@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/gallery/rivestimenti/rivestimenti-1.jpg';
+
+// FAQ — fonte unica per markup visibile + JSON-LD (i due DEVONO coincidere per Google)
+const faq = [
+  {
+    q: "Che cos'è la Pietra di Luserna?",
+    a: "È uno gneiss lamellare estratto nelle cave della Val Pellice, ai piedi del Monviso. Pietra naturale dalle tonalità grigio-azzurre con riflessi argentei, molto compatta, resistente al gelo e a bassa porosità.",
+  },
+  {
+    q: 'Quali finiture sono disponibili?',
+    a: 'Piano naturale (a spacco), fiammata (antiscivolo, ideale per esterni e bordi piscina) e segata. Ogni finitura cambia luce, colore e tatto della superficie.',
+  },
+  {
+    q: 'È adatta agli esterni alpini e al gelo?',
+    a: 'Sì: compattezza, bassa porosità ed elevata resistenza al gelo la rendono ideale per terrazze, vialetti e coperture di montagna.',
+  },
+  {
+    q: 'Nikestone fornisce anche la posa?',
+    a: 'Sì. Ci occupiamo di selezione in cava, fornitura, taglio su misura e posa artigianale con squadra interna, in Italia, Francia e Svizzera, senza intermediari.',
+  },
+  {
+    q: 'Come richiedo un preventivo?',
+    a: 'Compila il modulo contatti: ti ricontattiamo entro 48 ore lavorative con una quotazione su misura.',
+  },
+];
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nikestone.com/' },
+    { '@type': 'ListItem', position: 2, name: 'La Pietra di Luserna', item: 'https://www.nikestone.com/pietra-di-luserna' },
+  ],
+};
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<Base
+  title="Pietra di Luserna: caratteristiche, finiture e usi · Nikestone"
+  description="Cos'è la Pietra di Luserna: gneiss della Val Pellice, caratteristiche tecniche, finiture (piano naturale, fiammata, segata), usi per pavimentazioni, rivestimenti, coperture in lose e bordi piscina. Fornitura e posa Nikestone."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbLd)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqLd)} />
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <Image src={heroImg} alt="Muratura in Pietra di Luserna a spacco naturale: struttura lamellare a strati con sfumature dal grigio al dorato" class="page-hero-bg" widths={[768, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso">
+        <ol>
+          <li><a href="/" data-i="pietra.crumb.home">Home</a></li>
+          <li><span aria-current="page" data-i="pietra.crumb.current">La Pietra di Luserna</span></li>
+        </ol>
+      </nav>
+      <p class="eyebrow" data-i="pietra.hero.eyebrow">La Pietra di Luserna</p>
+      <h1 data-ihtml="pietra.hero.h1">Uno gneiss antico,<br /><em>nobile per natura.</em></h1>
+      <p class="page-lead" data-i="pietra.hero.lead">Roccia metamorfica estratta tra la Val Pellice e la Valle Po, in Piemonte. La sua struttura lamellare a strati, composta da quarzo, feldspati e miche, le conferisce resistenza eccezionale, brillantezza naturale e le caratteristiche sfumature che vanno dal grigio perla al verde salvia fino ai toni dorati.</p>
+    </div>
+  </section>
+
+  <!-- 4 CARD CARATTERISTICHE -->
+  <section class="luserna" aria-label="Caratteristiche della pietra">
+    <div class="container">
+      <div class="luserna-grid">
+        <div class="lcard rev">
+          <span class="lcard-ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="37" cy="12" r="3.5"/><path d="M4 41 L17 18 L26 31 L33 21 L44 41 Z"/><path d="M13 41 L20 29"/><path d="M30 41 L36 31"/></svg></span>
+          <h3 data-i="pietra.card.1.h">Origine</h3>
+          <p data-i="pietra.card.1.p">Estratta nelle cave della Val Pellice, ai piedi del Monviso. Un materiale che la montagna ci dona.</p>
+        </div>
+        <div class="lcard rev">
+          <span class="lcard-ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="22" height="15" rx="1"/><rect x="20" y="25" width="22" height="15" rx="1"/><path d="M9 16 q4.5 -4 9 0 t9 0" stroke-width="1.2"/><path d="M23 33 q4.5 -4 9 0 t9 0" stroke-width="1.2"/></svg></span>
+          <h3 data-i="pietra.card.2.h">Carattere</h3>
+          <p data-i="pietra.card.2.p">Riflessi argentei su venature fredde e screziate. Ogni lastra racchiude una storia a sé: unica, irripetibile, plasmata dalla natura.</p>
+        </div>
+        <div class="lcard rev">
+          <span class="lcard-ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4 L40 10 V24 C40 34 33 40 24 44 C15 40 8 34 8 24 V10 Z"/><path d="M24 15 V33 M15.5 19 L32.5 29 M32.5 19 L15.5 29"/></svg></span>
+          <h3 data-i="pietra.card.3.h">Resistenza</h3>
+          <p data-i="pietra.card.3.p">Compattezza, resistenza al gelo e bassa porosità la rendono ideale per esterni alpini, dehor, terrazze, bordi piscina e coperture a lose.</p>
+        </div>
+        <div class="lcard rev">
+          <span class="lcard-ico" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="14" width="11" height="20" rx="1"/><rect x="18.5" y="14" width="11" height="20" rx="1"/><rect x="32" y="14" width="11" height="20" rx="1"/><circle cx="10.5" cy="20" r=".9" fill="currentColor" stroke="none"/><circle cx="9" cy="26" r=".9" fill="currentColor" stroke="none"/><circle cx="12.5" cy="29" r=".9" fill="currentColor" stroke="none"/><path d="M20 30 L28 16 M22.5 32 L29.5 22"/><path d="M33.5 20 H41.5 M33.5 24 H41.5 M33.5 28 H41.5"/></svg></span>
+          <h3 data-i="pietra.card.4.h">Finiture</h3>
+          <p data-i="pietra.card.4.p">Piano naturale, fiammata, segata. Ogni finitura cambia luce e tatto e si adegua ai gusti del cliente più esigente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LONG COPY SEO + FAQ -->
+  <section class="section section--paper" aria-label="Approfondimento sulla Pietra di Luserna">
+    <div class="container">
+      <article class="prose rev">
+        <p class="eyebrow" data-i="pietra.deepen.eyebrow">Approfondimento</p>
+        <h2 data-i="pietra.deepen.h2">Che cos'è la Pietra di Luserna</h2>
+        <p data-ihtml="pietra.deepen.p1">La <strong>Pietra di Luserna</strong> è uno gneiss lamellare di origine metamorfica, estratto da secoli nel bacino di Luserna San Giovanni e della <strong>Val Pellice</strong>, in provincia di Torino. Il suo aspetto inconfondibile, superfici grigio-azzurre attraversate da sottili venature di mica argentea, l'ha resa una delle pietre naturali più apprezzate dell'arco alpino, dalle dimore storiche del Piemonte fino ai grandi chalet di lusso francesi e svizzeri.</p>
+        <p data-ihtml="pietra.deepen.p2">Si tratta di un materiale che unisce <strong>bellezza naturale</strong> e <strong>prestazioni tecniche</strong>: la struttura compatta e la bassa porosità garantiscono durata nel tempo, mentre la lamellarità permette di ottenere sia lastre di grande formato sia lose sottili per le coperture.</p>
+
+        <h3 data-i="pietra.tech.h3">Caratteristiche tecniche</h3>
+        <div class="spec-grid">
+          <div class="spec rev"><strong data-i="pietra.spec.1.t">Gneiss</strong><span data-i="pietra.spec.1.d">Roccia metamorfica lamellare</span></div>
+          <div class="spec rev"><strong data-i="pietra.spec.2.t">Bassa</strong><span data-i="pietra.spec.2.d">Porosità · alta resistenza al gelo</span></div>
+          <div class="spec rev"><strong data-i="pietra.spec.3.t">Antiscivolo</strong><span data-i="pietra.spec.3.d">Finitura fiammata per esterni</span></div>
+          <div class="spec rev"><strong data-i="pietra.spec.4.t">Grandi formati</strong><span data-i="pietra.spec.4.d">Lastre, lose, cubetti, pezzi speciali</span></div>
+        </div>
+        <p data-i="pietra.tech.p">Grazie a queste proprietà la Pietra di Luserna è impiegata con successo in contesti gravosi: terrazze esposte al gelo, bordi piscina, vialetti carrabili e coperture di montagna che devono resistere a neve e sbalzi termici.</p>
+
+        <h3 data-i="pietra.fin.h3">Le finiture</h3>
+        <ul class="dot">
+          <li data-ihtml="pietra.fin.1"><strong>Piano naturale (a spacco di cava):</strong> superficie irregolare e materica, esalta il carattere autentico della pietra.</li>
+          <li data-ihtml="pietra.fin.2"><strong>Fiammata:</strong> trattamento a fiamma che apre la superficie rendendola ruvida e antiscivolo, ideale per esterni, scale e bordi piscina.</li>
+          <li data-ihtml="pietra.fin.3"><strong>Segata:</strong> superficie liscia e regolare, perfetta per pavimentazioni interne eleganti e rivestimenti contemporanei.</li>
+        </ul>
+
+        <h3 data-i="pietra.use.h3">Dove si usa</h3>
+        <ul class="dot">
+          <li data-i="pietra.use.1">Pavimentazioni esterne: cortili, vialetti, terrazze e dehor in lastre, cubetti o opus.</li>
+          <li data-i="pietra.use.2">Pavimentazioni interne in lastre per soggiorni, cucine e zone giorno.</li>
+          <li data-i="pietra.use.3">Rivestimenti murali interni ed esterni, facciate, camini e pareti d'accento.</li>
+          <li data-i="pietra.use.4">Coperture in lose per chalet e rustici di montagna.</li>
+          <li data-i="pietra.use.5">Scale, bordi piscina, wellness e SPA.</li>
+        </ul>
+        <p data-ihtml="pietra.use.p">Per ogni applicazione Nikestone seleziona il blocco in cava, definisce il taglio e la finitura più adatti e cura la <a href="/metodo">posa artigianale</a> con squadra interna. Scopri i <a href="/lavori">lavori realizzati</a> o i nostri <a href="/servizi">servizi e lavorazioni</a>.</p>
+      </article>
+
+      <div class="faq rev" aria-label="Domande frequenti">
+        {faq.map((f, i) => (
+          <details>
+            <summary data-i={`pietra.faq.${i + 1}.q`}>{f.q}</summary>
+            <p data-i={`pietra.faq.${i + 1}.a`}>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE FIRMA #8 -->
+  <section class="stone-sign section--bone" aria-label="La nostra firma">
+    <div class="container">
+      <p class="eyebrow rev" data-i="pietra.sign.eyebrow">La nostra firma</p>
+      <p class="stone-sign-q rev" data-i="pietra.sign.q">La Pietra di Luserna, con la sua inconfondibile anima grigio-azzurra, è la nostra firma. Ma il viaggio non si ferma qui: selezioniamo le migliori pietre naturali su vostra richiesta per dare vita al vostro progetto, esattamente come lo avete immaginato.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" aria-label="Inizia il progetto">
+    <div class="container">
+      <p class="eyebrow rev" style="color:var(--accent)" data-i="pietra.cta.eyebrow">Preventivo</p>
+      <h2 class="rev" data-ihtml="pietra.cta.h2">Vuoi la Pietra di Luserna <em>nel tuo progetto?</em></h2>
+      <p class="rev" data-i="pietra.cta.p">Selezione del materiale, finitura, schema di posa e tempistiche. Trasporto incluso nel prezzo finale.</p>
+      <div class="hero-actions rev"><a href="/contatti" class="btn btn-on-dark"><span data-i="pietra.cta.btn">Richiedi un preventivo</span> <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+</Base>

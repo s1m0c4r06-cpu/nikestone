@@ -1,0 +1,40 @@
+---
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  { href: '/chi-siamo', key: 'nav.about', label: 'Chi siamo' },
+  { href: '/pietra-di-luserna', key: 'nav.stone', label: 'La Pietra' },
+  { href: '/lavori', key: 'nav.work', label: 'Lavori' },
+  { href: '/metodo', key: 'nav.process', label: 'Metodo' },
+  { href: '/servizi', key: 'nav.svc', label: 'Servizi' },
+  { href: '/cataloghi', key: 'nav.catalog', label: 'Cataloghi' },
+  { href: '/contatti', key: 'nav.contact', label: 'Contatti' },
+];
+const isCur = (h: string) => path === h;
+---
+<header class="nav" id="nav" data-state="top">
+  <div class="nav-inner">
+    <a href="/" class="brand" aria-label="Nikestone — Posa di Pietra Naturale"><img src="/logo.png" alt="Nikestone — Fornitura e Posa di Pietra Naturale" width="712" height="320" /></a>
+    <nav class="primary" aria-label="Navigazione principale">
+      {links.map((l) => (
+        <a href={l.href} data-i={l.key} class={isCur(l.href) ? 'is-current' : ''}>{l.label}</a>
+      ))}
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Lingua">
+        <button data-lang="it" aria-label="Italiano">IT</button><span aria-hidden="true">·</span>
+        <button data-lang="fr" aria-label="Français">FR</button><span aria-hidden="true">·</span>
+        <button data-lang="en" aria-label="English">EN</button><span aria-hidden="true">·</span>
+        <button data-lang="de" aria-label="Deutsch">DE</button>
+      </div>
+      <a href="/contatti" class="btn btn-solid btn-small" data-i="nav.cta">Preventivo</a>
+      <button class="ham" id="ham" aria-label="Apri menu" aria-expanded="false" aria-controls="mob"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mob-menu" id="mob" role="dialog" aria-label="Menu" aria-hidden="true">
+  {links.map((l) => <a href={l.href} data-i={l.key}>{l.label}</a>)}
+  <div class="mob-lang" role="group" aria-label="Lingua">
+    <button data-lang="it">IT</button><button data-lang="fr">FR</button><button data-lang="en">EN</button><button data-lang="de">DE</button>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/gallery/pavimentazioni/pavimentazioni-1.jpg';
+
+// Servizi = applicazioni (card solo titolo, niente forme: quelle stanno in "Formati")
+const services = [
+  'Pavimentazioni esterne',
+  'Rivestimenti murali',
+  'Coperture in lose',
+  'Pavimentazioni interne',
+  'Scale, bordi piscina / wellness',
+];
+
+// Formati / lavorazioni — descrizioni confermate dal cliente
+const formati = [
+  { n: 'Opus incertum (mosaico)', d: 'Lastre irregolari a spacco, accostate a mosaico.' },
+  { n: 'Liste da muro', d: 'Elementi sottili e allungati per rivestimenti a corsi e facciate.' },
+  { n: 'Cubetti', d: 'Piccoli elementi per pavimentazioni carrabili, posa ad archi o file.' },
+  { n: 'Quadrettoni', d: 'Lastre squadrate di formato regolare, posa ordinata.' },
+  { n: 'Binderi / cordoli', d: 'Elementi lineari per bordure, vialetti e delimitazioni.' },
+  { n: 'Copertine', d: 'Finitura per muretti e parapetti, con gocciolatoio.' },
+  { n: 'Canaline', d: 'Elementi scanalati per il deflusso delle acque.' },
+  { n: 'Pavé', d: 'Blocchetti per pavimentazioni rustiche carrabili.' },
+];
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.nikestone.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Servizi', item: 'https://www.nikestone.com/servizi' },
+  ],
+};
+---
+<Base
+  title="Servizi e lavorazioni in Pietra di Luserna · Nikestone"
+  description="Servizi Nikestone: pavimentazioni esterne e interne, rivestimenti murali, coperture in lose, scale, bordi piscina e wellness in Pietra di Luserna. Lavorazioni e formati su misura: opus incertum, liste da muro, cubetti, quadrettoni, binderi, copertine, canaline, pavé."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <Image src={heroImg} alt="Scala interna in Pietra di Luserna a piano naturale con illuminazione LED integrata, posa Nikestone" class="page-hero-bg" widths={[768, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso">
+        <ol>
+          <li><a href="/" data-i="servizi.crumbs.home">Home</a></li>
+          <li><span aria-current="page" data-i="servizi.crumbs.current">Servizi</span></li>
+        </ol>
+      </nav>
+      <p class="eyebrow" data-i="servizi.hero.eyebrow">Servizi &amp; lavorazioni</p>
+      <h1 data-ihtml="servizi.hero.h1">Quello che facciamo,<br /><em>eseguito a regola d'arte.</em></h1>
+    </div>
+  </section>
+
+  <!-- SERVIZI (card solo titolo) -->
+  <section class="services" aria-label="Servizi">
+    <div class="container">
+      <div class="svc-grid">
+        {services.map((s, i) => (
+          <article class="svc rev">
+            <span class="svc-n">{String(i + 1).padStart(2, '0')}</span>
+            <h3 data-i={`servizi.svc.${i + 1}`}>{s}</h3>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATI / LAVORAZIONI -->
+  <section class="formats" aria-label="Formati e lavorazioni">
+    <div class="container">
+      <p class="eyebrow rev" data-i="servizi.formats.eyebrow">Su misura</p>
+      <h2 class="rev" data-i="servizi.formats.h2">I formati che lavoriamo.</h2>
+      <div class="formats-grid">
+        {formati.map((f, i) => (
+          <div class="fmt rev">
+            <h3 data-i={`servizi.fmt.${i + 1}.n`}>{f.n}</h3>
+            <p data-i={`servizi.fmt.${i + 1}.d`}>{f.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" aria-label="Inizia il progetto">
+    <div class="container">
+      <p class="eyebrow rev" style="color:var(--accent)" data-i="servizi.cta.eyebrow">Preventivo</p>
+      <h2 class="rev" data-ihtml="servizi.cta.h2">Hai una lavorazione <em>in mente?</em></h2>
+      <p class="rev" data-i="servizi.cta.p">Materiale, finitura, schema di posa e tempistiche su misura. Trasporto incluso.</p>
+      <div class="hero-actions rev"><a href="/contatti" class="btn btn-on-dark"><span data-i="servizi.cta.btn">Richiedi un preventivo</span> <span class="arrow">→</span></a></div>
+    </div>
+  </section>
+</Base>
